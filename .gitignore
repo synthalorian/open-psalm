@@ -6,6 +6,11 @@ data/*.db
 data/*.db-shm
 data/*.db-wal
 
+# Raw source JSON data (downloaded by Python scripts, not tracked)
+data/*.json
+data/*.csv
+data/*.xhtml
+
 # IDE / editor
 .vscode/
 .idea/
