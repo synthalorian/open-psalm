@@ -258,6 +258,6 @@ MIT
 
 ## Credits
 
-**Made by synth with synthclaw 🎹🦞**
+**Made by synth with synthshark 🎹🦈**
 
 *"The Word, blazing fast in your terminal."*
