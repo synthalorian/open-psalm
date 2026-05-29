@@ -44,7 +44,25 @@ A high-performance TUI (Terminal User Interface) Bible reader for Linux. Vim-sty
 
 ## Installation
 
+### One-Command Install
+
+```bash
+git clone https://github.com/synthalorian/open-psalm
+cd open-psalm
+./install.sh
+```
+
+This builds the project, installs the `open-psalm` command to `~/.local/bin/`, and sets everything up. After install, just type:
+
+```bash
+open-psalm
+```
+
+The full TUI launches — books panel, verse of the day, synthwave theme. Works from any directory.
+
 ### Dependencies
+
+If you prefer to install deps manually first:
 
 ```bash
 # Arch Linux
@@ -240,6 +258,6 @@ MIT
 
 ## Credits
 
-**Created by:** synth (synthalorian) with assistance from synthclaw 🎹🦞
+**Made by synth with synthclaw 🎹🦞**
 
 *"The Word, blazing fast in your terminal."*
