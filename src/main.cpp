@@ -12,7 +12,7 @@
 
 namespace fs = std::filesystem;
 
-static constexpr const char* VERSION = "0.2.0";
+static constexpr const char* VERSION = "1.0.0";
 
 // ──────────────────────────────────────────────
 // ASCII banner
