@@ -360,7 +360,7 @@ Element App::renderHelpOverlay() {
     }
 
     lines.push_back(separator() | color(t.border));
-    lines.push_back(text(" Press any key to close") | color(t.secondary) | center);
+    lines.push_back(text(" Press ? to close") | color(t.secondary) | center);
 
     auto inner = vbox(std::move(lines)) | flex | center;
     return vbox({title, inner});
