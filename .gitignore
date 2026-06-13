@@ -21,3 +21,10 @@ data/*.xhtml
 # OS
 .DS_Store
 Thumbs.db
+
+# Sandbox / agent artifacts
+.claw/
+.clawd-todos.json
+.sandbox-tmp/
+.sandbox-home/
+Testing/
