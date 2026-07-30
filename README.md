@@ -1,5 +1,9 @@
 # Open Psalm
 
+![Status](https://img.shields.io/badge/status-active-brightgreen)
+![C++20](https://img.shields.io/badge/standard-C%2B%2B20-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 > A fast, keyboard-driven Bible reader for the terminal.
 
 Open Psalm is a C++ TUI (Terminal User Interface) application for reading and studying Scripture. It features vim-style navigation, full-text search across multiple translations, Strong's concordance, cross-references, reading plans, verse export, and 11 built-in themes — all running locally in your terminal.
