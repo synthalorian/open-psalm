@@ -5,6 +5,16 @@ namespace ThemeManager {
 std::vector<Theme> getAllThemes() {
     return {
         {
+            .name = "Blackshield",
+            .background = ftxui::Color::RGB(13, 13, 17),          // #0D0D11 void
+            .foreground = ftxui::Color::RGB(216, 211, 200),       // #D8D3C8 bone
+            .accent = ftxui::Color::RGB(193, 18, 31),             // #C1121F blood
+            .highlight = ftxui::Color::RGB(201, 162, 39),         // #C9A227 war-gold
+            .secondary = ftxui::Color::RGB(123, 157, 196),        // #7B9DC4 steel-blue bright
+            .border = ftxui::Color::RGB(138, 143, 152),           // #8A8F98 ash
+            .title = ftxui::Color::RGB(245, 241, 232),            // #F5F1E8 bone-bright
+        },
+        {
             .name = "Synthwave '84",
             .background = ftxui::Color::RGB(36, 0, 55),         // #240037 deep dark purple (omarchy)
             .foreground = ftxui::Color::RGB(255, 255, 255),     // Pure white text
