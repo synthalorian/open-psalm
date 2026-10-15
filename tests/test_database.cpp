@@ -21,8 +21,17 @@ static std::string find_db(const std::string& name) {
     return candidates[0].string();
 }
 
+// The translation databases (data/bible_*.db) are not committed; they are built
+// from downloaded sources by the scripts in data/. Tests that need them are
+// skipped when the files are absent (e.g. in CI) instead of crashing.
+#define REQUIRE_DB(p)                                                        \
+    do {                                                                     \
+        if (!fs::exists(p)) SKIP("missing " << (p) << " (run data/ scripts)"); \
+    } while (0)
+
 TEST_CASE("Database opens KJV", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     REQUIRE(fs::exists(path));
 
     Database db(path, "KJV", "King James Version (1769)");
@@ -33,6 +42,7 @@ TEST_CASE("Database opens KJV", "[database]") {
 
 TEST_CASE("Database getBooks returns 66 books", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     REQUIRE(fs::exists(path));
 
     Database db(path, "KJV", "King James Version (1769)");
@@ -47,6 +57,7 @@ TEST_CASE("Database getBooks returns 66 books", "[database]") {
 
 TEST_CASE("Database getChapters for known book", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     Database db(path, "KJV", "KJV");
 
     auto genesis_chs = db.getChapters("Genesis");
@@ -61,6 +72,7 @@ TEST_CASE("Database getChapters for known book", "[database]") {
 
 TEST_CASE("Database getVerses returns correct count", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     Database db(path, "KJV", "KJV");
 
     // Genesis 1 has 31 verses
@@ -79,6 +91,7 @@ TEST_CASE("Database getVerses returns correct count", "[database]") {
 
 TEST_CASE("Database getVerses respects book/chapter", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     Database db(path, "KJV", "KJV");
 
     auto verses = db.getVerses("John", 3);
@@ -98,6 +111,7 @@ TEST_CASE("Database getVerses respects book/chapter", "[database]") {
 
 TEST_CASE("Database search returns results", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     Database db(path, "KJV", "KJV");
 
     auto results = db.search("faith*");
@@ -110,6 +124,7 @@ TEST_CASE("Database search returns results", "[database]") {
 
 TEST_CASE("Database search respects limits", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     Database db(path, "KJV", "KJV");
 
     // Common word should return many results, capped at 100
@@ -120,6 +135,7 @@ TEST_CASE("Database search respects limits", "[database]") {
 
 TEST_CASE("Database handles missing book gracefully", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     Database db(path, "KJV", "KJV");
 
     auto chapters = db.getChapters("NonExistentBook");
@@ -131,10 +147,15 @@ TEST_CASE("Database handles missing book gracefully", "[database]") {
 
 TEST_CASE("All translations return same book count", "[database]") {
     auto kjv_path = find_db("bible_kjv.db");
+    REQUIRE_DB(kjv_path);
     auto asv_path = find_db("bible_asv.db");
+    REQUIRE_DB(asv_path);
     auto ylt_path = find_db("bible_ylt.db");
+    REQUIRE_DB(ylt_path);
     auto bbe_path = find_db("bible_bbe.db");
+    REQUIRE_DB(bbe_path);
     auto web_path = find_db("bible_web.db");
+    REQUIRE_DB(web_path);
 
     REQUIRE(fs::exists(kjv_path));
     REQUIRE(fs::exists(asv_path));
@@ -157,7 +178,9 @@ TEST_CASE("All translations return same book count", "[database]") {
 
 TEST_CASE("Verse count consistency between translations", "[database]") {
     auto kjv_path = find_db("bible_kjv.db");
+    REQUIRE_DB(kjv_path);
     auto asv_path = find_db("bible_asv.db");
+    REQUIRE_DB(asv_path);
 
     Database kjv(kjv_path, "KJV", "KJV");
     Database asv(asv_path, "ASV", "ASV");
@@ -192,6 +215,7 @@ TEST_CASE("FTS5 search works on all translations", "[database]") {
 
 TEST_CASE("Database handles empty search gracefully", "[database]") {
     auto path = find_db("bible_kjv.db");
+    REQUIRE_DB(path);
     Database db(path, "KJV", "KJV");
 
     auto results = db.search("xyznonexistent12345*");
