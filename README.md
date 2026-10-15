@@ -1,3 +1,5 @@
+![open-psalm](.github/preview.png)
+
 # Open Psalm
 
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
