@@ -4,7 +4,7 @@
 
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 ![C++20](https://img.shields.io/badge/standard-C%2B%2B20-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+![License](https://img.shields.io/badge/license-Apache--2.0-green)
 
 > A fast, keyboard-driven Bible reader for the terminal.
 
@@ -224,7 +224,7 @@ python3 data/download_extras.py
 
 ## License
 
-[MIT](LICENSE)
+[Apache-2.0](LICENSE)
 
 ---
 
