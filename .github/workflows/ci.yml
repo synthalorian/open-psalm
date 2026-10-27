@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: System deps
         run: sudo apt-get update -qq && sudo apt-get install -y -qq nlohmann-json3-dev >/dev/null
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
